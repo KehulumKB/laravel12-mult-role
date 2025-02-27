@@ -7,4 +7,4 @@
     />
 </svg> --}}
 
-<img src="{{ asset('logo.png') }}" alt="Logo">
+<img src="{{ asset('logo.png') }}" alt="TMFI Logo">
