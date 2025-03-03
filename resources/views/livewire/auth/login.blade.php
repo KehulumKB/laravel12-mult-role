@@ -52,7 +52,7 @@ new #[Layout('components.layouts.auth')] class extends Component {
             $this->redirectIntended(default: route('manager.dashboard', absolute: false), navigate: true);
                 break;
             default:
-                dd("No Role found");
+                $this->redirectIntended(default: route('login', absolute: false), navigate: true);
                 break;
         }
     }
