@@ -1,3 +1,5 @@
+{{-- @props(['title' => 'Admin Title']) <!-- Default value prevents errors --> --}}
+
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="dark">
 
@@ -9,8 +11,12 @@
     <flux:sidebar sticky stashable class="border-r border-zinc-200 bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900">
         <flux:sidebar.toggle class="lg:hidden" icon="x-mark" />
 
+        <a href="{{ route('admin.dashboard') }}" class="mr-5 flex items-center space-x-2" wire:navigate>
+            <x-app-logo class="size-8" href="#"></x-app-logo>
+        </a>
+
         @if (Auth::user()->role_id === 1)
-            <p>Admin Sidebar Here</p>
+            @include('components.layouts.app.admin-sidebar')
         @endif
 
          @if (Auth::user()->role_id === 2)
@@ -21,11 +27,7 @@
             <p>Manager Sidebar Here</p>
         @endif
 
-        <a href="{{ route('admin.dashboard') }}" class="mr-5 flex items-center space-x-2" wire:navigate>
-            <x-app-logo class="size-8" href="#"></x-app-logo>
-        </a>
-
-        <flux:navlist variant="outline">
+        {{-- <flux:navlist variant="outline">
             <flux:navlist.group heading="Platform" class="grid">
                 <flux:navlist.item icon="home" :href="route('admin.dashboard')"
                     :current="request()->routeIs('admin.dashboard')" wire:navigate>{{ __('Dashboard') }}
@@ -34,8 +36,9 @@
                  {{-- <flux:navlist.item icon="home" :href="route('projects')"
                     :current="request()->routeIs('projects')" wire:navigate>{{ __('Projects') }}
                 </flux:navlist.item> --}}
-            </flux:navlist.group>
-        </flux:navlist>
+            {{-- </flux:navlist.group>
+        </flux:navlist> --}}
+
 
         <flux:spacer />
 

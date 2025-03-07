@@ -1,9 +1,11 @@
 <?php
 
-use App\Livewire\Admin\Dashboard;
-use App\Livewire\ShareAdmin\Dashboard as ShareAdminDashboard;
-use Illuminate\Support\Facades\Route;
+use App\Livewire\Admin\AddNewUser;
 use Livewire\Volt\Volt;
+use App\Livewire\Admin\Dashboard;
+use App\Livewire\Admin\ManageUsers;
+use Illuminate\Support\Facades\Route;
+use App\Livewire\ShareAdmin\Dashboard as ShareAdminDashboard;
 
 Route::get('/', function () {
     return view('welcome');
@@ -21,17 +23,18 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Volt::route('settings/appearance', 'settings.appearance')->name('settings.appearance');
 
     // Role-based Routes
+    // Admin
     Route::middleware(['role:1'])->group(function(){
         Route::get('/admin/dashboard', Dashboard::class)->name('admin.dashboard');
+        Route::get('/admin/manage-users', ManageUsers::class)->name('admin.manage-users');
+        Route::get('/admin/add-new-user', AddNewUser::class)->name('admin.add-new-user');
+        Volt::route('/admin/add-zone', 'add-zone')->name('admin.add-zone');
+        // Volt::route('/admin/add-zone', 'admin/add-zone')->name('admin.add-zone');
     });
 
      Route::middleware(['role:2'])->group(function(){
         Route::get('/share-admin/dashboard', ShareAdminDashboard::class)->name('share-admin.dashboard');
     });
-
-
-    // Route::get('/projects', Dashboard::class)->name('projects');
-    // Route::get('share-admin/dashboard', ShareAdminDashboard::class)->name('share-admin.dashboard');
 });
 
 require __DIR__.'/auth.php';

@@ -20,12 +20,31 @@
             @if (Route::has('login'))
                 <nav class="flex items-center justify-end gap-4">
                     @auth
-                        <a
-                            href="{{ url('/dashboard') }}"
+                        @if (Auth::user()->role_id === 1)
+                            <a
+                            href="{{ url('/admin/dashboard') }}"
                             class="inline-block px-5 py-1.5 dark:text-[#EDEDEC] border-[#19140035] hover:border-[#1915014a] border text-[#1b1b18] dark:border-[#3E3E3A] dark:hover:border-[#62605b] rounded-sm text-sm leading-normal"
-                        >
+                            >
                             Dashboard
-                        </a>
+                            </a>
+                        @elseif (Auth::user()->role_id === 2)
+                            <a
+                            href="{{ url('/share-admin/dashboard') }}"
+                            class="inline-block px-5 py-1.5 dark:text-[#EDEDEC] border-[#19140035] hover:border-[#1915014a] border text-[#1b1b18] dark:border-[#3E3E3A] dark:hover:border-[#62605b] rounded-sm text-sm leading-normal"
+                            >
+                            Dashboard
+                            </a>
+                             @elseif (Auth::user()->role_id === 3)
+                            <a
+                            href="{{ url('/manager/dashboard') }}"
+                            class="inline-block px-5 py-1.5 dark:text-[#EDEDEC] border-[#19140035] hover:border-[#1915014a] border text-[#1b1b18] dark:border-[#3E3E3A] dark:hover:border-[#62605b] rounded-sm text-sm leading-normal"
+                            >
+                            Dashboard
+                            </a>
+                            @else
+                            <h1>Somthing Wrong</h1>
+                        @endif
+
                     @else
                         <a
                             href="{{ route('login') }}"

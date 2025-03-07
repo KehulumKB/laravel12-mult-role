@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Validation\Rule;
 use Livewire\Volt\Component;
 
+
 new class extends Component {
     public string $name = '';
     public string $email = '';
@@ -13,10 +14,12 @@ new class extends Component {
     /**
      * Mount the component.
      */
+
     public function mount(): void
     {
         $this->name = Auth::user()->name;
         $this->email = Auth::user()->email;
+        // Set the page title dynamically
     }
 
     /**
@@ -68,6 +71,8 @@ new class extends Component {
         Session::flash('status', 'verification-link-sent');
     }
 }; ?>
+
+{{-- @props([$title = "Profile"]) --}}
 
 <section class="w-full">
     @include('partials.settings-heading')
