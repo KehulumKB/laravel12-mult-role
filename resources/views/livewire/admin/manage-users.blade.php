@@ -1,4 +1,13 @@
 <div>
+
+    @if (session()->has('message'))
+        <div class="alert alert-success">
+            <livewire:components.success-message :message="session('message')" />
+        </div>
+    @elseif (session()->has('error'))
+        <livewire:components.error-alert :message="session('error')" />
+    @endif
+
     <div class="md:mt-2 md:mb-4 flex justify-between">
         <h1>Manage Users Page</h1>
         <div>
@@ -50,7 +59,7 @@
                                 {{ $user->email }}
                             </td>
                             <td class="px-6 py-4">
-                                {{ $user->role_id }}
+                                {{ $user->role->role ?? null }}
                             </td>
                             @if ($user->status === 'active')
                                 <td class="px-6 py-4 text-green-500 font-bold">
@@ -62,8 +71,8 @@
                                 </td>
                             @endif
                             <td class="px-6 py-4">
-                                <a href="#"
-                                    class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                                <a href="{{ route('admin.update-user', ['id'=>$user->id]) }}"
+                                    class="font-medium text-blue-600 dark:text-blue-500 hover:underline" wire:navigate>Edit</a>
                             </td>
                         </tr>
                     @endforeach

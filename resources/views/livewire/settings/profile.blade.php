@@ -7,9 +7,11 @@ use Illuminate\Validation\Rule;
 use Livewire\Volt\Component;
 
 
+
 new class extends Component {
     public string $name = '';
     public string $email = '';
+    public string $title = 'Title';
 
     /**
      * Mount the component.
@@ -77,7 +79,7 @@ new class extends Component {
 <section class="w-full">
     @include('partials.settings-heading')
 
-    <x-settings.layout heading="{{ __('Profile') }}" subheading="{{ __('Update your name and email address') }}">
+    <x-settings.layout heading="{{ __('Profile') }}" subheading="{{ __('Update your name and email address') }}" :title="$title">
         <form wire:submit="updateProfileInformation" class="my-6 w-full space-y-6">
             <flux:input wire:model="name" label="{{ __('Name') }}" type="text" name="name" required autofocus autocomplete="name" />
 

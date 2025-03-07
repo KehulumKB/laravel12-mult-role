@@ -1,5 +1,5 @@
     <div class="md:mt-2 md:mb-4">
-        <h1 class="font-bold py-4 text-center">Add New User</h1>
+        <h1 class="font-bold py-4 text-center">Update User</h1>
         <hr>
 
         <div class=" pt-4 flex flex-col items-center">
@@ -8,8 +8,8 @@
                     <livewire:components.error-alert :message="session('error')" />
                 </div>
             @endif
-
-            <form wire:submit='addUser' class="w-full md:w-1/2 flex flex-col gap-4">
+{{-- {{ $user->name }} --}}
+            <form wire:submit='updateUser' class="w-full md:w-1/2 flex flex-col gap-4">
                 <flux:field>
                     <flux:label>Username</flux:label>
                     <flux:input wire:model='username' placeholder="Type username" />
@@ -59,7 +59,7 @@
                     <flux:error name="password_confirmation" />
                 </flux:field>
 
-                <flux:button variant="primary" type="submit" class="">{{ __('Add User') }}</flux:button>
+                <flux:button variant="primary" type="submit" class="">{{ __('Update User') }}</flux:button>
 
             </form>
         </div>

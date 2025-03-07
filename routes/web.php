@@ -4,6 +4,7 @@ use App\Livewire\Admin\AddNewUser;
 use Livewire\Volt\Volt;
 use App\Livewire\Admin\Dashboard;
 use App\Livewire\Admin\ManageUsers;
+use App\Livewire\Admin\UpdateUser;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\ShareAdmin\Dashboard as ShareAdminDashboard;
 
@@ -28,6 +29,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('/admin/dashboard', Dashboard::class)->name('admin.dashboard');
         Route::get('/admin/manage-users', ManageUsers::class)->name('admin.manage-users');
         Route::get('/admin/add-new-user', AddNewUser::class)->name('admin.add-new-user');
+        Route::get('/admin/update-user/{id}', UpdateUser::class)->name('admin.update-user');
         Volt::route('/admin/add-zone', 'add-zone')->name('admin.add-zone');
         // Volt::route('/admin/add-zone', 'admin/add-zone')->name('admin.add-zone');
     });
