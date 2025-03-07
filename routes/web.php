@@ -1,10 +1,16 @@
 <?php
 
 use App\Livewire\Admin\AddNewUser;
+use App\Livewire\Admin\AddRegion;
+use App\Livewire\Admin\AddZone;
 use Livewire\Volt\Volt;
 use App\Livewire\Admin\Dashboard;
+use App\Livewire\Admin\ManageRegion;
 use App\Livewire\Admin\ManageUsers;
+use App\Livewire\Admin\ManageZone;
+use App\Livewire\Admin\UpdateRegion;
 use App\Livewire\Admin\UpdateUser;
+use App\Livewire\Admin\UpdateZone;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\ShareAdmin\Dashboard as ShareAdminDashboard;
 
@@ -30,8 +36,14 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('/admin/manage-users', ManageUsers::class)->name('admin.manage-users');
         Route::get('/admin/add-new-user', AddNewUser::class)->name('admin.add-new-user');
         Route::get('/admin/update-user/{id}', UpdateUser::class)->name('admin.update-user');
-        Volt::route('/admin/add-zone', 'add-zone')->name('admin.add-zone');
-        // Volt::route('/admin/add-zone', 'admin/add-zone')->name('admin.add-zone');
+
+        Route::get('/admin/manage-region', ManageRegion::class)->name('admin.manage-region');
+        Route::get('/admin/add-region', AddRegion::class)->name('admin.add-region');
+        Route::get('/admin/update-region/{id}', UpdateRegion::class)->name('admin.update-region');
+
+        Route::get('/admin/manage-zone', ManageZone::class)->name('admin.manage-zone');
+        Route::get('/admin/add-zone', AddZone::class)->name('admin.add-zone');
+        Route::get('/admin/update-zone/{id}', UpdateZone::class)->name('admin.update-zone');
     });
 
      Route::middleware(['role:2'])->group(function(){

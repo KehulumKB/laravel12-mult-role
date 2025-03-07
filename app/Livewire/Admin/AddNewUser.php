@@ -11,19 +11,14 @@ use Livewire\Attributes\Validate;
 use Illuminate\Database\QueryException;
 
 #[Title('Admin - Add New User')]
+
 class AddNewUser extends Component
 {
-    // #[Validate('required|unique:users,name')]
     public $username;
-    // #[Validate('required|unique:users,email')]
     public $email;
-    // #[Validate('required')]
     public $role;
-    // #[Validate('required')]
     public $status;
-    // #[Validate('required|confirmed')]
     public $password;
-    // #[Validate('required')]
     public $password_confirmation;
 
     public function addUser(Request $request)
@@ -39,15 +34,15 @@ class AddNewUser extends Component
         try {
             User::create([
                 'name' => $this->username,
-                'emaila' => $this->email,
+                'email' => $this->email,
                 'role_id' => $this->role,
                 'status' => $this->status,
                 'password' => $this->password,
             ]);
             session()->flash('message', 'Users Data saved successfully!');
-            return $this->redirectRoute('admin.manage-users');
+            return $this->redirect('/admin/manage-users', navigate: true);
         } catch (QueryException $e) {
-            session()->flash('error', 'Failed to save data!');
+            session()->flash('error', 'Failed to save data!' . $e);
         }
     }
 

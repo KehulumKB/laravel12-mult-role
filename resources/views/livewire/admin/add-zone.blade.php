@@ -1,14 +1,24 @@
-<?php
+    <div class="md:mt-2 md:mb-4">
+        <h1 class="font-bold py-4 text-center">Add New Zone</h1>
+        <hr>
 
-use Livewire\Volt\Component;
+        <div class=" pt-4 flex flex-col items-center">
+            @if (session()->has('error'))
+                <div class="alert alert-danger">
+                    <livewire:components.error-alert :message="session('error')" />
+                </div>
+            @endif
 
+            <form wire:submit='addZone' class="w-full md:w-1/2 flex flex-col gap-4">
+                <flux:field>
+                    <flux:label>Zone NAme</flux:label>
+                    <flux:input wire:model='zone' placeholder="Type zone" />
 
-new Layout('layouts.app') class extends Component {
+                    <flux:error name="zone" />
+                </flux:field>
 
-}; ?>
+                <flux:button variant="primary" type="submit" class="">{{ __('Add Zone') }}</flux:button>
 
-@props(['title' => 'Add Zone'])
-
-<div>
-    <h1>Add Zone</h1>
-</div>
+            </form>
+        </div>
+    </div>
