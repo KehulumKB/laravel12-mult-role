@@ -2,14 +2,17 @@
 
 use App\Livewire\Admin\AddNewUser;
 use App\Livewire\Admin\AddRegion;
+use App\Livewire\Admin\AddWoreda;
 use App\Livewire\Admin\AddZone;
 use Livewire\Volt\Volt;
 use App\Livewire\Admin\Dashboard;
 use App\Livewire\Admin\ManageRegion;
 use App\Livewire\Admin\ManageUsers;
+use App\Livewire\Admin\ManageWoreda;
 use App\Livewire\Admin\ManageZone;
 use App\Livewire\Admin\UpdateRegion;
 use App\Livewire\Admin\UpdateUser;
+use App\Livewire\Admin\UpdateWoreda;
 use App\Livewire\Admin\UpdateZone;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\ShareAdmin\Dashboard as ShareAdminDashboard;
@@ -44,6 +47,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('/admin/manage-zone', ManageZone::class)->name('admin.manage-zone');
         Route::get('/admin/add-zone', AddZone::class)->name('admin.add-zone');
         Route::get('/admin/update-zone/{id}', UpdateZone::class)->name('admin.update-zone');
+
+        Route::get('/admin/manage-woreda', ManageWoreda::class)->name('admin.manage-woreda');
+        Route::get('/admin/add-woreda', AddWoreda::class)->name('admin.add-woreda');
+        Route::get('/admin/update-woreda/{id}', UpdateWoreda::class)->name('admin.update-woreda');
     });
 
      Route::middleware(['role:2'])->group(function(){

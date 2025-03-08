@@ -10,10 +10,6 @@
                  :current="request()->routeIs('admin.manage-users')" wire:navigate>{{ __('Manage Users') }}
              </flux:navlist.item>
          </div>
-
-         {{-- <flux:navlist.item icon="home" :href="route('projects')"
-                    :current="request()->routeIs('projects')" wire:navigate>{{ __('Projects') }}
-                </flux:navlist.item> --}}
      </flux:navlist.group>
 
      <flux:navlist.group expandable heading="Manage Addresses" class="expandable lg:grid">
@@ -26,7 +22,10 @@
                  :current="request()->routeIs('admin.manage-zone')" wire:navigate>{{ __('Manage Zone') }}
              </flux:navlist.item>
 
-             <flux:navlist.item href="#">Manage Woredas</flux:navlist.item>
+             <flux:navlist.item icon="users" :href="route('admin.manage-woreda')"
+                 :current="request()->routeIs('admin.manage-woreda')" wire:navigate>{{ __('Manage Woreda') }}
+             </flux:navlist.item>
+
              <flux:navlist.item href="#">Manage Cities</flux:navlist.item>
              <flux:navlist.item href="#">Manage Sub Cities</flux:navlist.item>
              <flux:navlist.item href="#">Manage Kebeles</flux:navlist.item>

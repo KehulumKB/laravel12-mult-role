@@ -10,6 +10,16 @@
             @endif
 
             <form wire:submit='addZone' class="w-full md:w-1/2 flex flex-col gap-4">
+                  <flux:field>
+                    <flux:label>Region</flux:label>
+                    <flux:select wire:model.fill="region_id" placeholder="Choose Region">
+                        @foreach ($regions as $region)
+                            <flux:select.option value='{{ $region->id }}'>{{ $region->region }}</flux:select.option>
+                        @endforeach
+                    </flux:select>
+                    <flux:error name="region_id" />
+                </flux:field>
+
                 <flux:field>
                     <flux:label>Zone NAme</flux:label>
                     <flux:input wire:model='zone' placeholder="Type zone" />

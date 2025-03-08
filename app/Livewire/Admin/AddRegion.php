@@ -9,19 +9,19 @@ use Illuminate\Database\QueryException;
 
 class AddRegion extends Component
 {
-    public $country;
+    public $country_id;
     public $region;
 
     public function addRegion(){
         $this->validate([
-            'country' => 'required',
+            'country_id' => 'required',
             'region' => 'required|unique:regions,region',
         ]);
 
         try {
             Region::create([
                 'region' => $this->region,
-                'country_id' => $this->country,
+                'country_id' => $this->country_id,
             ]);
 
             session()->flash('message', 'Region Saved successfully!');

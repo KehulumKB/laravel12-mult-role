@@ -12,13 +12,13 @@
             <form wire:submit='addRegion' class="w-full md:w-1/2 flex flex-col gap-4">
 
                  <flux:field>
-                    <flux:label>Role</flux:label>
-                    <flux:select wire:model.fill="country" placeholder="Choose Country">
+                    <flux:label>Country</flux:label>
+                    <flux:select wire:model.fill="country_id" placeholder="Choose Country">
                         @foreach ($countries as $country)
                             <flux:select.option value='{{ $country->id }}'>{{ $country->country }}</flux:select.option>
                         @endforeach
                     </flux:select>
-                    <flux:error name="country" />
+                    <flux:error name="country_id" />
                 </flux:field>
 
                 <flux:field>
