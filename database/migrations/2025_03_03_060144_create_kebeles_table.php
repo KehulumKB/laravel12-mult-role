@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('kebeles', function (Blueprint $table) {
             $table->id();
             $table->string('kebele')->unique();
-            $table->foreignId('woreda_id')->constrained();
-            $table->foreignId('sub_city_id')->constrained();
+            $table->foreignId('woreda_id')->nullable()->constrained();
+            $table->foreignId('sub_city_id')->nullable()->constrained();
             $table->timestamps();
         });
     }

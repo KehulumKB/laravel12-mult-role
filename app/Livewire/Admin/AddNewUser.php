@@ -9,7 +9,6 @@ use Illuminate\Http\Request;
 use Livewire\Attributes\Title;
 use Livewire\Attributes\Validate;
 use Illuminate\Database\QueryException;
-
 #[Title('Admin - Add New User')]
 
 class AddNewUser extends Component

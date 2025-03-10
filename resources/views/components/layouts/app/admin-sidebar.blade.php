@@ -14,21 +14,29 @@
 
      <flux:navlist.group expandable heading="Manage Addresses" class="expandable lg:grid">
          <div class="" id="items">
-             <flux:navlist.item icon="users" :href="route('admin.manage-region')"
+            <flux:navlist.item icon="users" :href="route('admin.manage-region')"
                  :current="request()->routeIs('admin.manage-region')" wire:navigate>{{ __('Manage Region') }}
-             </flux:navlist.item>
+            </flux:navlist.item>
 
-             <flux:navlist.item icon="users" :href="route('admin.manage-zone')"
+            <flux:navlist.item icon="users" :href="route('admin.manage-zone')"
                  :current="request()->routeIs('admin.manage-zone')" wire:navigate>{{ __('Manage Zone') }}
-             </flux:navlist.item>
+            </flux:navlist.item>
 
-             <flux:navlist.item icon="users" :href="route('admin.manage-woreda')"
+            <flux:navlist.item icon="users" :href="route('admin.manage-woreda')"
                  :current="request()->routeIs('admin.manage-woreda')" wire:navigate>{{ __('Manage Woreda') }}
-             </flux:navlist.item>
+            </flux:navlist.item>
 
-             <flux:navlist.item href="#">Manage Cities</flux:navlist.item>
-             <flux:navlist.item href="#">Manage Sub Cities</flux:navlist.item>
-             <flux:navlist.item href="#">Manage Kebeles</flux:navlist.item>
+            <flux:navlist.item icon="users" :href="route('admin.manage-city')"
+                 :current="request()->routeIs('admin.manage-city')" wire:navigate>{{ __('Manage City') }}
+            </flux:navlist.item>
+
+            <flux:navlist.item icon="users" :href="route('admin.manage-sub-city')"
+                 :current="request()->routeIs('admin.manage-sub-city')" wire:navigate>{{ __('Manage Sub City') }}
+            </flux:navlist.item>
+
+            <flux:navlist.item icon="users" :href="route('admin.manage-kebele')"
+                 :current="request()->routeIs('admin.manage-kebele')" wire:navigate>{{ __('Manage Kebele') }}
+            </flux:navlist.item>
          </div>
      </flux:navlist.group>
 
